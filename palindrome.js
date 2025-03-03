@@ -12,15 +12,20 @@
 
 function palindromeChecker(str) {
     // TODO: Implement Me
+    // Removing case sensitivity by converting to lowercase
+    let lowerStr = str.toLowerCase()
 
-    console.log(false);
-    return false;
+    // string split, reversed and merged
+    let reversedStr = lowerStr.split('').reverse().join('');
+
+    // If the lowercase version of the original string is the same as its reversed form, it is a palindrome.
+    return lowerStr === reversedStr;
 }
 
 // Kodunuzu farkli girdilerle test edebilirsiniz.
 // Dosyayi calistirmak icin, Terminal >> node palindrome.js
-palindromeChecker("Racecar");
-palindromeChecker("Level");
-palindromeChecker("John Doe");
-palindromeChecker("Patika");
-palindromeChecker("Civic");
+console.log(palindromeChecker("Racecar"));
+console.log(palindromeChecker("Level"));
+console.log(palindromeChecker("John Doe"));
+console.log(palindromeChecker("Patika"));
+console.log(palindromeChecker("Civic"));
