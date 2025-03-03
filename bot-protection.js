@@ -22,12 +22,32 @@
 * Output: "jump fire back"
 */
 
-function botProtection (arr) {
+function botProtection(arr) {
     // TODO: Implement Me
-    let result = '';
+    if (!Array.isArray(arr)) {
+        throw new Error('Girdi bir array olmalıdır!'); // Throw error
+    }
 
-    console.log(result);
-    return result;
+    let seenPatterns = {}; //Object used to keep track of repetitions
+
+    for (let i = 0; i <= arr.length - 3; i++) {
+        // create 3 word pattern
+        let pattern = arr[i] + ' ' + arr[i + 1] + ' ' + arr[i + 2];
+
+        // If this pattern exists before, increase the number, otherwise set it to 1.
+        if (seenPatterns[pattern]) {
+            seenPatterns[pattern]++; //increase the number
+        } else {
+            seenPatterns[pattern] = 1; // // If seen for the first time, set it to 1
+        }
+
+        // If it repeated twice, return
+        if (seenPatterns[pattern] === 2) {
+            console.log(pattern);
+            return pattern;
+        }
+    }
+    return ''; // If there is no repeating 3rd, return empty string
 }
 
 // Kodunuzu farkli girdilerle test edebilirsiniz.
