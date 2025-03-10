@@ -20,6 +20,12 @@
 
 function chopArray(array, numElements) {
     // TODO: Implement Me
+    
+    // Edge case: Prevent infinite loop when numElements is 0
+    if (numElements === 0) {
+        throw new Error("numElements cannot be 0");
+    }
+    
     const result = {};
     let groupNum = 1; // To keep track of group numbers
 
@@ -31,7 +37,7 @@ function chopArray(array, numElements) {
             result[`group${groupNum}`] = group;
             groupNum++; //Increment counter for next group
         } else {
-            result['remaining'] = group; // // If the last group is not completed, add it as "remainder"
+            result['remaining'] = group; // If the last group is not completed, add it as "remainder"
         }
     }
 
